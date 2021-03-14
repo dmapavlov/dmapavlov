@@ -1,0 +1,44 @@
+import random
+
+
+def is_valid(num):
+    if 1 <= num < granica and num % 1 == 0:
+        return True
+    else:
+        return False
+
+
+count = 0
+print('Введите границу')
+granica = int(input())
+chislo = random.randint(1, granica)
+
+print('Добро пожаловать в числовую угадайку')
+
+while True:
+    print('Введите число от 1 до', granica)
+    num = int(input())
+    if is_valid(num) == False:
+        print('А может быть все-таки введем целое число от 1 до', granica, '?')
+        continue
+    else:
+        count += 1
+        if num < chislo:
+            print('Ваше число меньше загаданного, попробуйте еще разок')
+
+        elif num > chislo:
+            print('Ваше число больше загаданного, попробуйте еще разок')
+
+        elif num == chislo:
+            print('Вы угадали, поздравляем!')
+            print("Количество попыток=", count)
+            print('Если хотите сыграть снова, то введите Y, если хотите закончить игру, то нажмите N')
+            n1 = input()
+            if n1 == 'Y':
+                print('Введите границу')
+                granica = int(input())
+                chislo = random.randint(1, granica)
+                count = 0
+                continue
+            else:
+                break
